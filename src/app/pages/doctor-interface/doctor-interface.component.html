@@ -18,23 +18,25 @@
     <p>Список пациентов</p>
 </div>
 
-<mat-grid-list class='list' cols='3' rowHeight='100px'>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile>
+<mat-grid-list class='list' cols='10' rowHeight='60px'>
+    <mat-grid-tile [colspan]='1'>
+        <p>Номер</p>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]='7'>
         <p>ФИО</p>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]='2'>
         <p>Время приема</p>
     </mat-grid-tile>
     
     <div *ngFor = 'let item of doctorPatientList; let i=index'>
-        <mat-grid-tile class = {{item.status_name}}>
+        <mat-grid-tile class = {{item.status_name}} [colspan]='1'>
             <p>{{i + 1}}</p>
         </mat-grid-tile>
-        <mat-grid-tile class = {{item.status_name}}>
+        <mat-grid-tile class = {{item.status_name}} [colspan]='7'>
             <p>{{item.citizen_name_1}} {{item.citizen_name_2}} {{item.citizen_name_3}}</p>
         </mat-grid-tile>
-        <mat-grid-tile class = {{item.status_name}}>
+        <mat-grid-tile class = {{item.status_name}} [colspan]='2'>
             <div *ngIf = 'item.visit_time; then thenBlock; else elseBlock'></div>
             <ng-template #thenBlock>
                 <p>{{item.visit_time}}</p>

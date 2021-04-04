@@ -1,15 +1,15 @@
 <header></header>
 <filter (onFindEvent)="onFind($event)"></filter>
 <div *ngIf = "doctors">
-    <mat-grid-list cols='3' rowHeight='100px'>
+    <mat-grid-list cols='10' rowHeight='60px'>        
         <div *ngFor = 'let item of doctors; let i=index'>
-            <mat-grid-tile>
+            <mat-grid-tile [colspan]='1'>
                 {{i + 1}}
             </mat-grid-tile>
-            <mat-grid-tile>
+            <mat-grid-tile [colspan]='7'>
                 <p>{{item.citizen_name_1}} {{item.citizen_name_2}} {{item.citizen_name_3}} ({{item.specialization_name}})</p>
             </mat-grid-tile>
-            <mat-grid-tile>
+            <mat-grid-tile [colspan]='2'>
                 <button (click)="onClick(item)" [routerLink]="['/lk']">Войти</button>
             </mat-grid-tile>
         </div>

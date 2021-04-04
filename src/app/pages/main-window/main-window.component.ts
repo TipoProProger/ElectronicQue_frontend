@@ -28,7 +28,6 @@ export class MainWindowComponent implements OnInit {
   }
 
   onFind(citizen : CitizenNode) {
-    console.log(citizen);
     this.doctorListService.findDoctorByFIO(citizen).subscribe(doctors => this.doctors = doctors);
 }
 }

@@ -45,11 +45,6 @@ export class DashboardComponent implements OnInit {
       var patientsNew : PatientQueNode[] = patientsRecieved;
       for (var i = 0; i < patientsNew.length; i++)
       {
-        console.log(patientsNew[i]);
-        console.log(this.patients[0]);
-        console.log(this.patients.indexOf(patientsNew[i]));
-        console.log(this.newData);
-        
         if (!this.exists(patientsNew[i]))
         {
             this.newData = true;                  
@@ -57,7 +52,6 @@ export class DashboardComponent implements OnInit {
       }
       
       this.patients = patientsRecieved;
-      console.log(this.patients);
       if (this.newData)
       {
         this.sound.play();

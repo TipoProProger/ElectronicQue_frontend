@@ -1,3 +1,17 @@
-<p>main-window works!</p>
-
 <header></header>
+<filter (onFindEvent)="onFind($event)"></filter>
+<div *ngIf = "doctors">
+    <mat-grid-list cols='3' rowHeight='100px'>
+        <div *ngFor = 'let item of doctors; let i=index'>
+            <mat-grid-tile>
+                {{i + 1}}
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <p>{{item.citizen_name_1}} {{item.citizen_name_2}} {{item.citizen_name_3}} ({{item.specialization_name}})</p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button (click)="onClick(item)" [routerLink]="['/lk']">Войти</button>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>

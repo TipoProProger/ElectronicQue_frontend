@@ -1,0 +1,23 @@
+<mat-grid-list cols='4' rowHeight='100px'>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>Фамилия</mat-label>
+            <input (keydown.enter) = "onClick()" matInput [(ngModel)]="citizen.citizen_name_1">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>Имя</mat-label>
+            <input (keydown.enter) = "onClick()" matInput [(ngModel)]="citizen.citizen_name_2">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>Отчество</mat-label>
+            <input (keydown.enter) = "onClick()" matInput [(ngModel)]="citizen.citizen_name_3">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button (keydown.enter) = "onClick()" (click)="onClick()">Найти</button>
+    </mat-grid-tile>
+</mat-grid-list>

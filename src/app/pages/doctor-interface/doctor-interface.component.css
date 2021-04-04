@@ -1,0 +1,11 @@
+mat-grid-list.list mat-grid-tile {
+    background: deeppink;
+  } 
+
+mat-grid-list.buttons mat-grid-tile {
+    background: deepskyblue;
+} 
+
+mat-grid-list.list mat-grid-tile.InProcess {
+  background: yellow;
+}

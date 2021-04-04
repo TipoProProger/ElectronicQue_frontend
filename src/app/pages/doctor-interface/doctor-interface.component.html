@@ -1,0 +1,66 @@
+<div *ngIf='doctor; then thenBlock else elseBlock' ></div>
+<ng-template #thenBlock>
+    <header [FIO] = "fio"></header>
+</ng-template>
+<ng-template #elseBlock>
+    <header></header>
+</ng-template>
+
+<div>
+<mat-form-field>
+    <mat-label>Номер кабинета</mat-label>
+    <input (keydown.enter) = "onRoomEnter()" matInput [(ngModel)]="doctor.room_number">
+</mat-form-field>
+<button (click) = "onRoomEnter()">Подтвердить</button>
+</div>
+
+<div>
+    <p>Список пациентов</p>
+</div>
+
+<mat-grid-list class='list' cols='3' rowHeight='100px'>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+        <p>ФИО</p>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <p>Время приема</p>
+    </mat-grid-tile>
+    
+    <div *ngFor = 'let item of doctorPatientList; let i=index'>
+        <mat-grid-tile class = {{item.status_name}}>
+            <p>{{i + 1}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile class = {{item.status_name}}>
+            <p>{{item.citizen_name_1}} {{item.citizen_name_2}} {{item.citizen_name_3}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile class = {{item.status_name}}>
+            <div *ngIf = 'item.visit_time; then thenBlock; else elseBlock'></div>
+            <ng-template #thenBlock>
+                <p>{{item.visit_time}}</p>
+            </ng-template>
+            <ng-template #elseBlock>
+                <p>Б/В</p>
+            </ng-template>            
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>
+
+<mat-grid-list class='buttons' cols='4' rowHeight='100px'>
+    <mat-grid-tile [colspan] = '2'>        
+    </mat-grid-tile>    
+    <mat-grid-tile>
+        <button (click)="onCallNextPatient()" [disabled]="disableButtons">Вызвать пациента</button>
+    </mat-grid-tile>
+    <mat-grid-tile [rowspan] = '2'>
+        <button [routerLink]="['/']">Завершить работу</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button [routerLink]="['/']">Назад</button>
+    </mat-grid-tile>
+    <mat-grid-tile>        
+    </mat-grid-tile>
+    <mat-grid-tile> 
+        <button (click)="onEndCurrentPatiend()" [disabled]="disableButtons"> Завершить прием</button>       
+    </mat-grid-tile>
+</mat-grid-list>

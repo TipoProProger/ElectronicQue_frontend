@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() FIO: string = "Введите ФИО специалиста";
   currentDate = new Date();
-  currentTime = this.currentDate.getMinutes();
+  currentTime = this.currentDate.getTime();// getMinutes();
 
   constructor() { }
 

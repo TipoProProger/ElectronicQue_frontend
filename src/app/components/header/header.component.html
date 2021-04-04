@@ -1,13 +1,11 @@
-<p>header works!</p>
-
-<mat-grid-list cols='3'>
+<mat-grid-list cols='3' rowHeight='100px'>
     <mat-grid-tile>
-        <p>test</p>        
+        <p>{{FIO}}</p>        
     </mat-grid-tile>
     <mat-grid-tile>
         <p>Дата: {{currentDate | date:'dd.MM.yyyy'}}</p>        
     </mat-grid-tile>
     <mat-grid-tile>
-        <p>{{currentTime}}</p>        
+        <p>{{currentTime | date:'HH:mm'}}</p>        
     </mat-grid-tile>
 </mat-grid-list>

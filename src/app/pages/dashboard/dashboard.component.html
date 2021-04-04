@@ -1,0 +1,44 @@
+<mat-grid-list cols='4' rowHeight='100px'>    
+    <mat-grid-tile>
+        <p>image</p>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]='3'>
+        <p>Электронная очередь</p>
+    </mat-grid-tile>    
+</mat-grid-list>
+
+<mat-grid-list cols='6' rowHeight='100px'>
+    <mat-grid-tile>
+        <p>Код пациента*</p>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <p>ФИО врача</p>
+    </mat-grid-tile>    
+    <mat-grid-tile>
+        <p>Кабинет</p>
+    </mat-grid-tile>
+    
+    <mat-grid-tile>
+        <p>Код пациента*</p>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <p>ФИО врача</p>
+    </mat-grid-tile>    
+    <mat-grid-tile>
+        <p>Кабинет</p>
+    </mat-grid-tile>
+
+    <div *ngFor = 'let item of patients; let i=index'>
+        <mat-grid-tile>
+            {{item.citizen_id}}
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p>{{item.citizen_name_1}} {{item.citizen_name_2}} {{item.citizen_name_3}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            {{item.room_number}}
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>
+
+<p>*Код пациента указан на  талоне амбулаторного пациента</p>

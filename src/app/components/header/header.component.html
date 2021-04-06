@@ -1,11 +1,11 @@
-<mat-grid-list cols='3' rowHeight='100px'>
-    <mat-grid-tile>
-        <p>{{FIO}}</p>        
+<mat-grid-list cols='10' rowHeight='60px'>
+    <mat-grid-tile [colspan]='7'>
+        <p class='doctorName'>{{FIO}}</p>        
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]='2'>
         <p>Дата: {{currentDate | date:'dd.MM.yyyy'}}</p>        
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]='1'>
         <p>{{currentTime | date:'HH:mm'}}</p>        
     </mat-grid-tile>
 </mat-grid-list>

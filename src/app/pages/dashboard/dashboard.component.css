@@ -1,3 +1,56 @@
-mat-grid-list.list mat-grid-tile {
-    background: deepskyblue;
-} 
+* {
+    font-size: large;  
+  }
+  
+  div.mainDiv {
+    height: 100%;
+    width: 100%;  
+    display: flex;
+    flex-direction: column;
+    background: rgb(197, 224, 179);
+  }
+  
+  div.header {
+    height: auto;  
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  div.list {
+    overflow: auto;
+    flex: auto;
+  }
+  
+  div.footer {
+    height: auto; 
+  } 
+  
+  mat-grid-list.list-header {
+    border: 2px solid black;
+  }
+  mat-grid-list.list mat-grid-tile.InProcess {
+    background: yellow;
+  }
+
+  mat-grid-list.list mat-grid-tile.right {
+      border-right: 2px solid black;
+  }
+  mat-grid-list.list mat-grid-tile.header {
+      border-bottom: 2px solid black;
+      border-top: 2px solid black;
+  }
+  
+  p.specialNote {    
+    font-size: x-large;
+    text-align: center;
+  }
+
+  p.electronQue {
+    font-size: xx-large;    
+  }
+
+  img.img {
+      height: 100%;
+      width: 100%;
+  }

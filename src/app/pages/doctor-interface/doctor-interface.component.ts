@@ -6,6 +6,7 @@ import { interval } from 'rxjs';
 import { DoctorClientListNode } from 'src/app/Interfaces/DoctorClientListNode';
 import { RoomServiceService } from 'src/app/services/room-service.service';
 import { RoomNode } from 'src/app/Interfaces/RoomNode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-interface',
@@ -15,7 +16,8 @@ import { RoomNode } from 'src/app/Interfaces/RoomNode';
 export class DoctorInterfaceComponent implements OnInit {
   
   constructor(private doctorPatientListService : DoctorPatientListServiceService,
-    private roomService : RoomServiceService) { }
+    private roomService : RoomServiceService,
+    private router: Router) { }
 
   doctorPatientList : DoctorClientListNode[] = [];
   public doctor : DoctorListNode = {} as DoctorListNode;
@@ -24,21 +26,19 @@ export class DoctorInterfaceComponent implements OnInit {
 
   ngOnInit(): void {
     var buffer = localStorage.getItem("currentDoctor") || "";
-    if (buffer == "")
-      {
-        //error
-        // should send to main window
-      }
+    if (buffer === "")
+    {
+        this.router.navigate(['/']);
+    }
     
     this.doctor = JSON.parse(buffer);    
-    this.fio = this.doctor.citizen_name_1 + " " + this.doctor.citizen_name_2 + " " + this.doctor.citizen_name_3 + " " + this.doctor.specialization_name;
+    this.fio = 'Врач: ' + this.doctor.citizen_name_1 + " " + this.doctor.citizen_name_2 + " " + this.doctor.citizen_name_3 + " (" + this.doctor.specialization_name + ")";
     
     this.getDoctorPatientList();
     interval(5000).subscribe(X => this.getDoctorPatientList());
   }
 
   getDoctorPatientList(): void {
-    ///FIXME || 0 ?
     this.doctorPatientListService.getDoctorPatientList(this.doctor.personal_specialization_id || 0).subscribe(doctorPatientList => {
       this.doctorPatientList = doctorPatientList;
     });
@@ -46,12 +46,16 @@ export class DoctorInterfaceComponent implements OnInit {
 
   onCallNextPatient() : void {
     this.doctorPatientListService.postCallNextPatient(this.doctor.personal_specialization_id).subscribe(X => {
+      if (X.hasOwnProperty('error_string'))
+        console.log(X.error_string);      
       this.getDoctorPatientList();
     })
   }
 
   onEndCurrentPatiend() : void {
     this.doctorPatientListService.putEndCurrentPatient(this.doctor.personal_specialization_id).subscribe(X => {
+      if (X.hasOwnProperty('error_string'))
+        console.log(X.error_string);
       this.getDoctorPatientList();
     })
   }  
@@ -61,8 +65,10 @@ export class DoctorInterfaceComponent implements OnInit {
     room.room_number = this.doctor.room_number;
     room.personal_specialization_id = this.doctor.personal_specialization_id;
 
-    this.roomService.postRoom(room).subscribe(_ => {
-      this.disableButtons = false;      
+    this.roomService.postRoom(room).subscribe(X => {
+      if (X.hasOwnProperty('error_string'))
+        console.log(X.error_string);
+      else this.disableButtons = false;      
     });    
   }
 }

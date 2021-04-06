@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getPatients(): void {
-    this.dashboardService.getPatients().subscribe(patientsRecieved => {
+    this.dashboardService.getPatients().subscribe(patientsRecieved => {      
       this.newData = false;
       var patientsNew : PatientQueNode[] = patientsRecieved;
       for (var i = 0; i < patientsNew.length; i++)

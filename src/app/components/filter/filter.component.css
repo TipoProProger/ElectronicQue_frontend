@@ -1,3 +1,17 @@
-mat-grid-list {
-    background: lightcoral;
-  }
+* {
+  font-size: large;  
+}
+
+button[disabled] {
+  color: grey;
+}
+
+button {
+  width: 80%;
+  height: 40%;
+  color: whitesmoke;
+}
+
+div {
+  background: lightblue;
+}

@@ -1,11 +1,61 @@
-mat-grid-list.list mat-grid-tile {
-    background: deeppink;
-  } 
+* {
+  font-size: large;  
+}
 
-mat-grid-list.buttons mat-grid-tile {
-    background: deepskyblue;
+div.mainDiv {
+  height: 100%;
+  width: 100%;  
+  display: flex;
+  flex-direction: column;
+  background: lightblue;
+}
+
+div.header {
+  height: auto;  
+}
+
+div.list {
+  overflow: auto;
+  flex: auto;
+}
+
+div.buttons {
+  height: auto; 
 } 
 
+mat-grid-list.list-header {
+  border: 2px solid black;
+}
+mat-grid-list.list {
+  border: 2px solid black;
+}
 mat-grid-list.list mat-grid-tile.InProcess {
   background: yellow;
+}
+
+p.errorMessage {
+  color: red;
+  font-size: large;
+  text-align: center;
+}
+
+p.tableName {
+  font-size: larger;
+}
+
+div.buttons button {
+  width: 80%;
+  height: 80%;
+}
+
+button[disabled] {
+  color: grey;
+}
+
+button {
+  color: whitesmoke;
+}
+
+div.room * {
+  margin-left: 5px;
 }

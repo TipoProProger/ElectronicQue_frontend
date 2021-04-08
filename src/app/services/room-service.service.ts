@@ -4,15 +4,17 @@ import { of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/operators';
 import { RoomNode } from '../Interfaces/RoomNode';
+import { BaseURL } from './BaseURL';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomServiceService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,
+    private baseUrl : BaseURL) { }
 
-  private roomUrl = "http://localhost:50045/api/room";
+  private roomUrl = this.baseUrl.API_URL + "api/room";
 
   getRoom(id : number) : Observable<RoomNode> {
     return this.http.get<RoomNode>(this.roomUrl + "\\" + id)

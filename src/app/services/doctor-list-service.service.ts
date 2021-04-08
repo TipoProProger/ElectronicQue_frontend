@@ -5,15 +5,17 @@ import { Observable, of } from 'rxjs';
 import { DoctorListNode } from '../Interfaces/DoctorListNode';
 import { CitizenNode } from '../Interfaces/CitizenNode';
 import { catchError } from 'rxjs/operators';
+import { BaseURL } from './BaseURL';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorListServiceService {
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient,
+    private baseUrl: BaseURL ) { }
 
-  private doctorsUrl = "http://localhost:50045/api/doctors"
+  private doctorsUrl = this.baseUrl.API_URL + "api/doctors"
 
   getDoctors() : Observable<DoctorListNode[]> {
     return this.http.get<DoctorListNode[]>(this.doctorsUrl)

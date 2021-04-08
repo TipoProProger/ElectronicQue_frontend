@@ -3,15 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { PatientQueNode } from '../Interfaces/PatientQueNode';
+import { BaseURL } from './BaseURL';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardServiceService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,
+    private baseUrl : BaseURL) { }
 
-  private dashboardUrl = "http://localhost:50045/api/dashboard";
+  private dashboardUrl = this.baseUrl.API_URL + "api/dashboard";
 
   getPatients() : Observable<PatientQueNode[]> {
     return this.http.get<PatientQueNode[]>(this.dashboardUrl)

@@ -3,15 +3,17 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { DoctorClientListNode } from '../Interfaces/DoctorClientListNode';
+import { BaseURL } from '../services/BaseURL';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorPatientListServiceService {
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient,
+    private baseUrl: BaseURL) {}
 
-  private doctorClientListUrl = "http://localhost:50045/api/doctorpatientlist";
+  private doctorClientListUrl = this.baseUrl.API_URL + "api/doctorpatientlist";
 
   getDoctorPatientList(id : number) : Observable<DoctorClientListNode[]> {
     return this.http.get<DoctorClientListNode[]>(this.doctorClientListUrl + "\\" + id)

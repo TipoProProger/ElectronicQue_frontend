@@ -63,7 +63,7 @@
                 <button (click)="onCallNextPatient()" [disabled]="disableButtons">Вызвать пациента</button>
             </mat-grid-tile>
             <mat-grid-tile>
-                <button [routerLink]="['/']">Назад</button>
+                <button (click)="onBack()" [routerLink]="['/']">Назад</button>
             </mat-grid-tile>
             <mat-grid-tile [colspan]='2'>        
             </mat-grid-tile>

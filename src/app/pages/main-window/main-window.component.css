@@ -30,6 +30,12 @@ button[disabled] {
 
 button {
   color: whitesmoke;
+  background: #353635; /* Old browsers */
+  background: -moz-linear-gradient(top,  #353635 0%, #161716 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #353635 0%,#161716 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #353635 0%,#161716 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353635', endColorstr='#161716',GradientType=0 ); /* IE6-9 */
+  border-radius: 10px;
 }
 
 p {
